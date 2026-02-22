@@ -2,69 +2,70 @@
 
 ## Bloc 1 – Scénario économique (choix discrétionnaire)
 
-**Narratif retenu : hard landing US début 2026**, récession technique sur trois trimestres, PIB réel 2026 autour de ‑2 % a/a. L’Europe suit avec retard (croissance proche de 0), mais sans crise financière.
+**Narratif retenu : reprise modérée US en 2026**, sortie progressive du ralentissement 2024-2025, croissance PIB réel ~2 % a/a. L'Europe bénéficie d'un environnement mondial plus porteur (croissance ~1-1,5 %), sans surchauffe ni crise.
 
-- **Chocs appliqués (voir `notebooks/scenario_dashboard.ipynb`, overrides 2026)**  
-  `us_gdp_qoq –10 % annualisé`, `ISM 34`, `Michigan 40`, `Initial claims +150 %`, `NFP –500 k`, `CPI MoM –0,4 %`. chocs uniquement sur les projections 2026, historique inchangé.
-- **Consommateurs** : moral bas (Michigan 40) et marché du travail qui se retourne (claims >300k, NFP négatifs) → consommation recule dès T1 2026, désinflation rapide via baisse des salaires.
-- **Entreprises** : ISM 34 → contraction profonde de la production et des commandes ; marges sous pression, gel du capex et de l’emploi.
-- **Politiques monétaire et budgétaire** : Fed coupe vers 2,50 % fin 2026 ; reprise du QE en cas de stress de liquidité. Budgets US/UE laissent jouer les stabilisateurs automatiques, avec soutien ciblé à l’industrie/emploi.
-- **Commerce international** : demande mondiale molle, dollar plus fort → export US pénalisées ; zone euro affectée via chaînes industrielles mais bénéficie d’énergie moins chère.
+- **Chocs appliqués (voir `notebooks/scenario_dashboard.ipynb`, overrides 2026)**
+  `us_gdp_qoq 2,0 %`, `ISM 52`, `Michigan 72`, `Initial claims 240k`, `NFP +180k`, `CPI MoM 0,25 %`. Chocs uniquement sur les projections 2026, historique inchangé.
+- **Consommateurs** : moral en amélioration (Michigan 72, vs creux ~60 en 2024) mais sans euphorie ; marché du travail résilient (claims 240k, NFP +180k/mois) → consommation en progression modérée, soutien à la croissance.
+- **Entreprises** : ISM 52 → retour en légère expansion manufacturière après la contraction de 2024 ; reprise prudente du capex et des embauches, marges stables.
+- **Politiques monétaire et budgétaire** : Fed maintient les taux autour de 4,0-4,5 % en 2026, baisses graduelles possibles si l'inflation confirme son recul. BCE suit avec prudence, taux dépôt vers 2,5 %. Pas de stimulus budgétaire massif, stabilisateurs automatiques suffisent.
+- **Commerce international** : demande mondiale en amélioration ; dollar stable → export US et EU bénéficient d'un cycle global plus porteur.
 
 ## Bloc 2 – Scénario financier et outil quantitatif
 
-### Outil quanti 
+### Outil quanti
 - Modèle **Markov 4 régimes** sur `us_gdp_qoq` + **Kalman** sur indicateurs avancés (ISM, Michigan, claims, NFP) → probabilité de récession.
-- Baseline (nov. 2025) : blend ≈ **11 %** (phase « reprise »).  
-  Scénario chocs 2026 : Markov = **1**, Kalman ≈ **0,964**, **blend ≈ 1** → régime « récession » quasi certain pendant le choc.
+- Baseline (nov. 2025) : blend ≈ **11 %** (phase « reprise »).
+  Scénario US Recovery 2026 : probabilité de récession reste **basse (~15-25 %)**, phase dominante « **reprise** ». Le modèle capte la normalisation progressive des indicateurs sans basculer en régime boom ni récession.
 
 ### Traduction financière du scénario
 
-**Lien direct macro → prix/taux (ce qui sera évalué)**  
-- Chute PIB/ISM → baisse BPA et compression modérée des multiples actions (US/EU).  
-- Claims + NFP négatifs → détente forte des Fed Funds, rally sur la duration US.  
-- Désinflation rapide (CPI -0,4 % MoM) → BCE suit avec retard, soutien aux Bund/OAT.  
-- Dollar plus fort en récession US + demande mondiale faible → actions EU pénalisées mais moins que US si EUR faible.  
-- Liquidité/prudence → poids du cash pour rebalancer si spreads/actions se disloquent.
+**Lien direct macro → prix/taux (ce qui sera évalué)**
+- PIB +2 % / ISM 52 → croissance bénéficiaire modeste (+5-8 % BPA), multiples actions stables à légèrement en expansion.
+- Marché du travail résilient (claims 240k, NFP +180k) → Fed prudente, pas de baisse agressive des taux → courbe des taux stable, légère pentification.
+- Inflation maîtrisée (CPI 0,25 % MoM ≈ 3 % annualisé) → pas de resserrement supplémentaire, mais pas de rally obligataire majeur non plus.
+- Dollar stable → pas de pénalité de change pour les actifs européens.
+- Environnement de carry favorable → taux courts restent rémunérateurs, actions en hausse modérée.
 
-| Classe d’actifs (5) | Hypothèse 2026 | Lien direct avec bloc 1 + probas |
+| Classe d'actifs (5) | Hypothèse 2026 | Lien direct avec bloc 1 + probas |
 | --- | --- | --- |
-| Actions US (SPX) | -15 % prix, BPA -10 %, PER en baisse modérée (peur récession) | Récession US confirmée par blend 1 → baisse bénéfices et compression légère des multiples. |
-| Actions Europe (SX5E) | -12 % prix, surperformance vs US si EUR <1,05 | Recul export et capex mais soutien budgétaire UE ; dépendance moindre à tech US. |
-| Taux US 10 ans | Rally vers **3,0 %** fin 2026, pente 2s10s se repentit légèrement | Fed coupe agressivement en récession ; achats duration recherchés. |
-| Taux EUR core (Bund/OAT 10 ans) | Bund vers **1,8 %**, OAT vers **2,4 %** | BCE suit Fed avec retard, désinflation rapide ; spread OAT stable avec soutien budgétaire. |
-| Cash EUR (ESTRON) | Rendement glisse de 2 % à 1,2 % | Détente monétaire progressive ; garder du dry powder pendant la récession. |
+| Actions US (SPX) | +8-12 % prix, BPA +5-8 %, PER stable ~20x | Reprise confirmée par blend <25 % ; croissance bénéficiaire soutenue par la consommation et le capex. |
+| Actions Europe (SX5E) | +6-10 % prix, rattrapage de valorisation | Europe bénéficie du cycle global, valorisations attractives (PER <14x) ; soutien budgétaire UE. |
+| Taux US 10 ans | Stable autour de **4,0-4,3 %** fin 2026 | Fed prudente, pas de rally obligataire ; portage correct mais gains en capital limités. |
+| Taux EUR core (Bund/OAT 10 ans) | Bund vers **2,3 %**, OAT vers **2,9 %** | BCE baisse graduellement ; spread OAT stable, pas de stress budgétaire. |
+| Cash EUR (ESTRON) | Rendement glisse de 3,0 % à 2,5 % | Portage encore correct mais en érosion progressive ; moindre intérêt si les actifs risqués performent. |
 
 ## Bloc 3 – Allocation stratégique 2026 (8 lignes, ref 12,5 % chacune)
 
-Référence : benchmark égal-pondéré 8 lignes × 12,5 %. Si l’on anticipe une baisse marquée des actions en hard landing 2026, on réduit fortement l’exposition actions et on concentre la performance attendue sur la duration longue. Le cash reste présent pour rebalancer en cours d’année si les points d’entrée s’améliorent.
+Référence : benchmark égal-pondéré 8 lignes × 12,5 %. En phase de reprise modérée, on **surpondère les actions** (moteur de performance via croissance bénéficiaire) et on maintient une **exposition obligataire neutre** (portage mais sans rally massif). Le cash est réduit car le coût d'opportunité augmente en reprise.
 
 **Achats / ventes vs benchmark (Δ en points de %)**
-- Actions coupées nettement : SPX -9,0 ; SX5E -7,0.  
-- Duration longue achetée : US10 +19,5 ; Bund10 +12,5 ; OAT10 +5,5.  
-- Courts réduits : US2 -7,5 ; Bund2 -9,0.  
-- Cash ESTRON -5,0 (léger maintien) pour garder de la flexibilité.
+- Actions renforcées : SPX +7,5 ; SX5E +5,5.
+- Duration longue neutre à légèrement sous-pondérée : US10 -2,5 ; Bund10 -1,0 ; OAT10 +1,5.
+- Courts maintenus pour le portage : US2 +1,0 ; Bund2 -3,0.
+- Cash ESTRON -9,0 (réduit fortement, coût d'opportunité en reprise).
 
-| Ligne (indice) | Poids final | Δ vs 12,5 % | Rationale (hard landing 2026, baisse actions) |
+| Ligne (indice) | Poids final | Δ vs 12,5 % | Rationale (reprise modérée 2026) |
 | --- | --- | --- | --- |
-| Actions US (SPX) | **3,5 %** | -9,0 | Forte sous-pondération : BPA en baisse, compression des multiples ; on garde un minimum pour la convexité de rebond ultérieur. |
-| Actions Europe (SX5E) | **5,5 %** | -7,0 | Sous-pondération mais un léger maintien pour valorisations plus basses et soutien budgétaire UE. |
-| US Treasuries 10Y (USGG10) | **32 %** | +19,5 | Pilier principal : capter la détente Fed en récession, couverture actions. |
-| US Treasuries 2Y (USGG2) | **5 %** | -7,5 | Front-end moins protecteur ; on privilégie la convexité du 10Y. |
-| Bund 10Y (GDBR10) | **25 %** | +12,5 | Duration core EUR pour amortir la récession ; BCE suit avec retard. |
-| Bund 2Y (GDBR2) | **3,5 %** | -9,0 | Réduction du court EUR ; portage moins utile si la BCE coupe. |
-| OAT 10Y (GFRN10) | **18 %** | +5,5 | Carry vs Bund, bénéfice de la détente monétaire en zone euro. |
-| Marché monétaire EUR (ESTRON) | **7,5 %** | -5,0 | Cash maintenu pour rebalancer si les spreads/actions deviennent attractifs. |
+| Actions US (SPX) | **20 %** | +7,5 | Surpondération : BPA en hausse, consommation résiliente, tech & services porteurs ; principal moteur de performance. |
+| Actions Europe (SX5E) | **18 %** | +5,5 | Surpondération : valorisations attractives, rattrapage du cycle, soutien budgétaire UE et reprise industrielle. |
+| US Treasuries 10Y (USGG10) | **10 %** | -2,5 | Sous-pondération modérée : portage correct mais gains en capital limités si la Fed reste prudente. |
+| US Treasuries 2Y (USGG2) | **13,5 %** | +1,0 | Légère surpondération : portage attractif à ~4 %, faible duration = protection si taux remontent. |
+| Bund 10Y (GDBR10) | **11,5 %** | -1,0 | Légère sous-pondération : détente BCE limitée, portage moyen ; on préfère le carry court. |
+| Bund 2Y (GDBR2) | **9,5 %** | -3,0 | Sous-pondération : portage EUR court moins attractif que US2 ; BCE plus lente que Fed. |
+| OAT 10Y (GFRN10) | **14 %** | +1,5 | Légère surpondération : spread vs Bund offre du carry supplémentaire, risque souverain contenu. |
+| Marché monétaire EUR (ESTRON) | **3,5 %** | -9,0 | Fortement réduit : coût d'opportunité élevé en reprise ; on garde un minimum pour la liquidité. |
 
-Total = 100 %. Lecture : portefeuille très défensif, performance attendue surtout de la duration longue (US/EUR). Actions très réduites pour protéger contre la baisse anticipée, cash pour l’option de renforcement futur. Courts (US2, Bund2) coupés car peu convexes en hard landing.
+Total = 100 %. Lecture : portefeuille **orienté croissance**, performance attendue principalement des actions (US et EU). Obligations en portage neutre sans pari directionnel fort. Cash minimal car la reprise rend l'attentisme coûteux.
 
-**Pourquoi cette exposition globale ?**  
-Nous assumons un hard landing avec baisse actions : la source principale de performance devient la duration longue (Fed et BCE qui coupent), les actions sont fortement sous-pondérées pour limiter la baisse, et le cash offre une option d’achat si les valorisations deviennent nettement plus attractives. Les maturités courtes sont réduites car elles apportent moins de protection et de convexité que la longue en récession.
+**Pourquoi cette exposition globale ?**
+Nous anticipons une reprise modérée confirmée par le modèle (blend ~15-25 %, phase « reprise ») : la source principale de performance est la croissance bénéficiaire des actions, accompagnée d'un portage obligataire correct. Les actions sont surpondérées car les fondamentaux s'améliorent sans surchauffe (ISM 52, pas 60+). La duration longue est neutre car la Fed ne coupe pas agressivement en reprise. Le cash est réduit au minimum de liquidité.
 
-**Cadre temporel**  
-Allocation décidée **début 2026** en vue de la trajectoire projetée **fin 2026** : on se positionne tôt sur la duration, on reste prudent sur les actions tant que le blend reste en régime « récession », et on conserve du cash pour ajuster si le cycle se retourne plus vite que prévu.
+**Cadre temporel**
+Allocation décidée **début 2026** en vue de la trajectoire projetée **fin 2026** : on se positionne tôt sur les actions pour capter la revalorisation progressive, on maintient du portage obligataire, et on conserve la flexibilité de pivoter vers la duration si le cycle se dégrade.
 
 ### Risques clés
-1. **Rebond plus rapide que prévu** (données US se retournent fin 2025) → sous-pondération actions coûteuse, pente US se pentifie brutalement.
-2. **Inflation ré-accélère** (chocs énergie/géopolitique) → baisses de taux limitées, duration pénalisée.
-3. **Stress de liquidité/crédit** non capté par nos indicateurs de flux réels → spreads crédit et actions chutent plus que prévu, nécessité d’augmenter le cash.
+1. **Rechute en récession** (choc exogène, crise géopolitique, resserrement du crédit) → surpondération actions coûteuse, nécessité de pivoter vers la duration longue.
+2. **Inflation ré-accélère** (chocs énergie, salaires) → Fed relève les taux, pénalise à la fois actions et obligations ; nécessité de renforcer le cash.
+3. **Surchauffe / boom** (croissance plus forte que prévu, ISM >57) → bascule vers un régime boom, risque de bulle ; opportunité de surfer mais nécessité de surveiller les excès de valorisation.
+4. **Stagnation prolongée** (reprise sans conviction, ISM reste ~50) → actions déçoivent, portage obligataire devient la seule source de performance.
